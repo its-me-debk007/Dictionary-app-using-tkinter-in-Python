@@ -17,10 +17,10 @@ Label(window,image=img).place(x = 0, y = 0)
 e = Entry(window, fg="black", bg="ivory3", font="Comic 18", width=20, borderwidth= 2)
 e.pack(side= TOP, anchor= NW, padx= 15, pady= 20)
 
-meaning = Label(window, text = "Meaning of the word will appear here", wraplength = 400, fg = "white", bg = "black", font = "Helvetica 17", justify = "left", width= 45, height= 14)
-meaning.pack(side= LEFT, anchor= NW, padx= 15, pady= 20)
+meaning = Label(window, text = "Meaning of the word will appear here", wraplength = 400, fg = "white", bg = "black", font = "Helvetica 17", justify = "left", width= 45, height= 18)
+meaning.pack(side= LEFT, anchor= NW, padx= 15, pady= 10)
 
-imgTag = HTMLLabel(window, html = "<h2>The image of the word will appear here!</h2>")
+imgTag = Label(window, text = "The image of the word will appear here!", font = "Calibiri 17", wraplength = 320, height = 11, bg = "grey")
 imgTag.pack()
 
 def click():
@@ -44,7 +44,7 @@ def click():
                 ans += "\n2) " + str(ansDict["Noun"][1]) + "."
             if "Verb" in ansDict:
                 ans += "\n\nVerb:\n" + str(ansDict["Verb"][0]) + "."
-            print(ans, "\n\n")
+            # print(ans, "\n\n")
             meaning.config(text = ans)
 
             try:
@@ -62,15 +62,16 @@ def click():
             
             except:
                 imgTag.pack_forget()
-                imgTag = HTMLLabel(window, html = "<h2>The image of the word you searched for can't be displayed :( </h2>")
-
+                imgTag = Label(window, text = "The image of the word you searched for can't be displayed :(", font = "Calibiri 17", wraplength = 300, height = 11, bg = "grey")
+                imgTag.pack()
 
 
 
         except:
             meaning.config(text= "There was an error! Please make sure that the spelling is correct and you're connected to the internet!")
             imgTag.pack_forget()
-            imgTag = HTMLLabel(window, html = "<h2>The image of the word you searched for can't be displayed :( </h2>")
+            imgTag = Label(window, text = "The image of the word you searched for can't be displayed :(", font = "Calibiri 17", wraplength = 300, height = 11, bg = "grey", justify = "left")
+            imgTag.pack()
 
 
 search = ImageTk.PhotoImage(Image.open("searchIcon.jpg"))
